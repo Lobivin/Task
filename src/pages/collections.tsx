@@ -43,7 +43,7 @@ import {
 const Collections: NextPage = () => {
     const router = useRouter();
 
-    const { isAuthenticated, isLoading: authLoading, user, isHydrated } = useAuth();
+    const { isAuthenticated, isLoading: authLoading,  isHydrated } = useAuth();
     const { collections, loading, error, refreshCollections } = useCollections();
     const { clearError, handleError } = useErrorHandler();
 

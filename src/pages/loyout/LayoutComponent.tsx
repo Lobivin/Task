@@ -40,9 +40,10 @@ export default function Layout({ children }: LayoutProps) {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [darkMode, setDarkMode] = useState(false);
-    const { user, logout } = useAuth();
+    const {  logout } = useAuth();
     const router = useRouter();
-
+    const userName = 'Seçil Store';
+    const userEmail = 'info@secilstore.com';
     const theme = useMemo(
         () =>
             createTheme({
@@ -113,14 +114,14 @@ export default function Layout({ children }: LayoutProps) {
             {/* User Info */}
             <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Avatar sx={{ bgcolor: 'primary.main' }}>
-                    {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
+                    {userName.charAt(0)}
                 </Avatar>
                 <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Typography variant="subtitle2" sx={{ fontWeight: 'medium' }} noWrap>
-                        {user?.name || 'Kullanıcı'}
+                        {userName}
                     </Typography>
                     <Typography variant="caption" color="text.secondary" noWrap>
-                        {user?.email}
+                        {userEmail}
                     </Typography>
                 </Box>
             </Box>

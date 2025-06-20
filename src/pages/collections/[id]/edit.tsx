@@ -312,7 +312,7 @@ const EditCollection: NextPage = () => {
               <Grid item xs={12} md={5}>
                 <Paper sx={{ p: 3 }}>
                   <Typography variant="h6" sx={{ mb: 2 }}>
-                    Sabitler (Sürükle-Bırak ile ekle/çıkar)
+                    Sabitler
                   </Typography>
                   <Box
                       sx={{
@@ -416,7 +416,7 @@ const EditCollection: NextPage = () => {
                             ) : (
                                 <Box>
                                   <Typography variant="subtitle2" sx={{ mb: 1 }}>
-                                    Sırası değişen veya eklenen ürünler:
+                                    Sabitlere Eklenenilen Ürünler:
                                   </Typography>
                                   <ul style={{ margin: 0, paddingLeft: 20 }}>
                                     {constantsChanged.map((p) => (
@@ -429,7 +429,17 @@ const EditCollection: NextPage = () => {
                             )}
                           </DialogContent>
                           <DialogActions>
-                            <Button onClick={() => setShowConstantsChanges(false)}>Kapat</Button>
+                            <Button onClick={() => setShowConstantsChanges(false)}>Vazgeç</Button>
+                            <Button
+                                onClick={() => {
+                                  setShowConstantsChanges(false);
+                                  handleSaveConstants();
+                                }}
+                                variant="contained"
+                                disabled={constantsSaveLoading}
+                                startIcon={<SaveIcon />}>
+                              {constantsSaveLoading ? <CircularProgress size={20} /> : 'Kaydet'}
+                            </Button>
                           </DialogActions>
                         </Dialog>
                       </Container>

@@ -48,11 +48,11 @@ export default function LoginForm() {
     }, [rememberedUsername]);
 
     useEffect(() => {
-        if (isAuthenticated) {
+        if (isAuthenticated && !isLoading) {
             const callbackUrl = (router.query.callbackUrl as string) || '/collections';
             router.push(callbackUrl);
         }
-    }, [isAuthenticated, router]);
+    }, [isAuthenticated, isLoading, router]);
 
     useEffect(() => {
         if (debouncedUsername) {
@@ -114,9 +114,6 @@ export default function LoginForm() {
 
             if (success) {
                 setRememberedUsername(formData.username.trim());
-
-                const callbackUrl = router.query.callbackUrl as string || '/collections';
-                router.push(callbackUrl);
             } else {
                 const errorMessage = error || 'Geçersiz email veya şifre';
                 setLocalError(errorMessage);
